@@ -1,0 +1,45 @@
+* {
+  font-family: sans-serif;
+}
+
+.logo {
+  width: 50%;
+  height: 75%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
+
+.nav-items > ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-items > ul :hover {
+  cursor: pointer;
+}
+
+.nav-items > ul > li {
+  margin: 20px;
+}
+
+.card {
+  width: 300px;
+  border: 1px solid black;
+  text-align: center;
+  margin: 20px;
+}
+
+.restaurant-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card > img {
+  width: 100%;
+}
