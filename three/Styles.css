@@ -1,0 +1,12 @@
+.Header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgb(159, 217, 255);
+}
+
+.img{
+    width: 5%;
+    height: 5%;
+    align-self: center;
+}

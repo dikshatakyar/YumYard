@@ -12,6 +12,8 @@ const Body = () => {
   const [searchInput, setSearchInput] = useState(""); //state variable
   const [restaurants, setRestaurants] = useState(restaurantList);
 
+  console.log("holding on ain't easy")
+  
   return (
     <>
       <div className="search-container">
