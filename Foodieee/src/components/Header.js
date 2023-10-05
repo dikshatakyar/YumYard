@@ -1,12 +1,15 @@
-import foodiez_logo from "../../foodiez_logo.png";
+import foodiez_logo from "../../Assets/foodiez_logo.png";
+import { useState } from "react";
 
-const TitleLogo = () => (
+export const TitleLogo = () => (
   <a href="/">
     <img className="logo" src={foodiez_logo} alt="Foodiez" />
   </a>
 );
 
-const HeaderComponent = () => {
+const Header = () => {
+  const [btnName, setBtnName] = useState("Login");
+
   return (
     <div className="header">
       <TitleLogo />
@@ -16,10 +19,17 @@ const HeaderComponent = () => {
           <li>About us</li>
           <li>Contact</li>
           <li>Cart</li>
+          <button
+            onClick={() => {
+              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
+            }}
+          >
+            {btnName}
+          </button>
         </ul>
       </div>
     </div>
   );
 };
 
-export default HeaderComponent;
+export default Header;
