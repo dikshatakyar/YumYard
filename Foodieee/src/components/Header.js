@@ -1,5 +1,6 @@
 import foodiez_logo from "../../Assets/foodiez_logo.png";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const TitleLogo = () => (
   <a href="/">
@@ -15,9 +16,15 @@ const Header = () => {
       <TitleLogo />
       <div className="nav-items">
         <ul>
-          <li>Home</li>
-          <li>About us</li>
-          <li>Contact</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
           <li>Cart</li>
           <button
             onClick={() => {
