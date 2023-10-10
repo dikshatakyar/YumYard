@@ -11,12 +11,14 @@ const getTopRated = (listofRestaurants) => {
 const Body = () => {
   const [searchInput, setSearchInput] = useState(""); //state variable
   const [listofRestaurants, setListofRestaurants] = useState([]);
-  //when seListofRestaurants will be called, it will find the diff and do reconcillation
+  //when setListofRestaurants will be called, it will find the diff and do reconcillation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (searchInput === "") {
+      fetchData();
+    }
+  }, [searchInput]);
 
   const fetchData = async () => {
     const myData = await fetch(
@@ -34,7 +36,7 @@ const Body = () => {
     );
   };
 
-  return listofRestaurants.length === 0 ? (
+  return (listofRestaurants && listofRestaurants.length) === 0 ? (
     <Shimmer />
   ) : (
     <>
