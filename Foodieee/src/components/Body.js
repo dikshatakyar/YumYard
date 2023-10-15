@@ -2,6 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import Error from "./Error";
 
 const getTopRated = (listofRestaurants) => {
   return listofRestaurants.filter(
@@ -14,6 +15,17 @@ const Body = () => {
   const [listofRestaurants, setListofRestaurants] = useState([]);
   //when setListofRestaurants will be called, it will find the diff and do reconcillation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+
+  const searchResorDish = () => {
+    const filteredRes = listofRestaurants.filter((restaurant) =>
+      restaurant.info.name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    return filteredRes.length == 0 ? (
+      <Error />
+    ) : (
+      setFilteredRestaurants(filteredRes)
+    );
+  };
 
   useEffect(() => {
     if (searchInput === "") {
@@ -44,21 +56,23 @@ const Body = () => {
       <div className="filter">
         <div className="search">
           <input
+            placeholder="search your favorite restaurant or dish..."
             className="search-box"
             type="text"
             value={searchInput}
             onChange={(e) => {
               setSearchInput(e.target.value);
             }}
+            onKeyDown={(e) => {
+              console.log("PRESSED");
+              if (e.key == "Enter") {
+                searchResorDish();
+              }
+            }}
           />
           <button
             onClick={() => {
-              const filteredRes = listofRestaurants.filter((restaurant) =>
-                restaurant.info.name
-                  .toLowerCase()
-                  .includes(searchInput.toLowerCase())
-              );
-              setFilteredRestaurants(filteredRes);
+              searchResorDish();
             }}
           >
             Search
@@ -78,6 +92,7 @@ const Body = () => {
         {filteredRestaurants.map((restaurant) => {
           return (
             <Link
+              className="res-link"
               key={restaurant.info.id}
               to={"/restaurants/" + restaurant.info.id}
             >
