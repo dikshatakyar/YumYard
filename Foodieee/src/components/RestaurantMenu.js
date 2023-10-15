@@ -63,11 +63,14 @@ const RestaurantMenu = () => {
             {
             }
             return (
-              <li key={item.card.info.id}>
-                {item.card.info.name} -- Rs.{" "}
-                {item.card.info.price
-                  ? item.card.info.price / 100
-                  : item.card.info.defaultPrice / 100}
+              <li className="menu-item" key={item.card.info.id}>
+                <div className="dishName">{item.card.info.name}</div>
+                <div className="dishPrice">
+                  Rs.{" "}
+                  {item.card.info.price
+                    ? item.card.info.price / 100
+                    : item.card.info.defaultPrice / 100}
+                </div>
               </li>
             );
           })}
