@@ -2,7 +2,7 @@ import RestaurantCard from "./RestaurantCard";
 import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
-import Error from "./Error";
+import NoResult from "./NoResult";
 
 const getTopRated = (listofRestaurants) => {
   return listofRestaurants.filter(
@@ -15,23 +15,22 @@ const Body = () => {
   const [listofRestaurants, setListofRestaurants] = useState([]);
   //when setListofRestaurants will be called, it will find the diff and do reconcillation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [resultsFound, setResultsFound] = useState(true);
 
   const searchResorDish = () => {
     const filteredRes = listofRestaurants.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchInput.toLowerCase())
     );
-    return filteredRes.length == 0 ? (
-      <Error />
-    ) : (
-      setFilteredRestaurants(filteredRes)
-    );
+    return filteredRes.length == 0
+      ? setResultsFound(false)
+      : setFilteredRestaurants(filteredRes);
   };
 
   useEffect(() => {
-    if (searchInput === "") {
+    if (searchInput === "" || resultsFound == false) {
       fetchData();
     }
-  }, [searchInput]);
+  }, [searchInput, resultsFound]);
 
   const fetchData = async () => {
     const myData = await fetch(
@@ -56,7 +55,7 @@ const Body = () => {
       <div className="filter">
         <div className="search">
           <input
-            placeholder="search your favorite restaurant or dish..."
+            placeholder="search your favorite restaurant..."
             className="search-box"
             type="text"
             value={searchInput}
@@ -88,19 +87,24 @@ const Body = () => {
           TOP RATED RESTAURANT
         </button>
       </div>
-      <div className="restaurant-list">
-        {filteredRestaurants.map((restaurant) => {
-          return (
-            <Link
-              className="res-link"
-              key={restaurant.info.id}
-              to={"/restaurants/" + restaurant.info.id}
-            >
-              <RestaurantCard {...restaurant.info} />
-            </Link>
-          );
-        })}
-      </div>
+      {resultsFound === false ? (
+        <NoResult />
+      ) : (
+        <div className="restaurant-list">
+          {filteredRestaurants.length > 0 &&
+            filteredRestaurants.map((restaurant) => {
+              return (
+                <Link
+                  className="res-link"
+                  key={restaurant.info.id}
+                  to={"/restaurants/" + restaurant.info.id}
+                >
+                  <RestaurantCard {...restaurant.info} />
+                </Link>
+              );
+            })}
+        </div>
+      )}
     </>
   );
 };
