@@ -17,6 +17,7 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
 
+
   const searchResorDish = () => {
     const filteredRes = listofRestaurants.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchInput.toLowerCase())
