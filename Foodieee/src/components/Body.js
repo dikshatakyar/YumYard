@@ -17,7 +17,6 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
 
-
   const searchResorDish = () => {
     const filteredRes = listofRestaurants.filter((restaurant) =>
       restaurant.info.name.toLowerCase().includes(searchInput.toLowerCase())
@@ -26,12 +25,6 @@ const Body = () => {
       ? setResultsFound(false)
       : setFilteredRestaurants(filteredRes);
   };
-
-  useEffect(() => {
-    if (searchInput === "" || resultsFound == false) {
-      fetchData();
-    }
-  }, [searchInput, resultsFound]);
 
   const fetchData = async () => {
     const myData = await fetch(
@@ -49,6 +42,13 @@ const Body = () => {
     );
   };
 
+  useEffect(() => {
+    if (searchInput === "") {
+      setResultsFound(true);
+      fetchData();
+    }
+  }, [searchInput]);
+
   return (listofRestaurants && listofRestaurants.length) === 0 ? (
     <Shimmer />
   ) : (
@@ -64,7 +64,6 @@ const Body = () => {
               setSearchInput(e.target.value);
             }}
             onKeyDown={(e) => {
-              console.log("PRESSED");
               if (e.key == "Enter") {
                 searchResorDish();
               }
