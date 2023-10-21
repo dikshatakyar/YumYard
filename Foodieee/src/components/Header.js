@@ -17,21 +17,30 @@ const Header = () => {
       <div className="nav-items">
         <ul>
           <li>
-            <Link className="res-link" to="/">Home</Link>
+            <Link className="res-link" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link className="res-link" to="/about">About us</Link>
+            <Link className="res-link" to="/about">
+              About us
+            </Link>
           </li>
           <li>
-            <Link className="res-link" to="/contact">Contact</Link>
+            <Link className="res-link" to="/contact">
+              Contact
+            </Link>
           </li>
           <li>Cart</li>
+
           <button
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
-            {btnName}
+            <Link className="res-link" to="/login">
+              {btnName}
+            </Link>
           </button>
         </ul>
       </div>
