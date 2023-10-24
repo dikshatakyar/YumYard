@@ -3,6 +3,7 @@ import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import { ResMenu_API } from "../config";
 import { IMG_CDN_URL } from "../config";
+import NoResult from "./NoResult";
 
 const RestaurantMenu = () => {
   const [resInfo, setResInfo] = useState(null);
@@ -72,18 +73,17 @@ const RestaurantMenu = () => {
           <img src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
       </div>
-
-      <div className="recommendedMenu">
-        <h1>MENU</h1>
-        <ul>
-          <div className="sub-head">
-            <div>ITEMS</div>
-            <div>PRICE</div>
-          </div>
-          {itemCards &&
-            itemCards.map((item) => {
-              return (
-                <>
+      {itemCards ? (
+        <div className="recommendedMenu">
+          <h1>MENU</h1>
+          <ul>
+            <div className="sub-head">
+              <div>ITEMS</div>
+              <div>PRICE</div>
+            </div>
+            {itemCards &&
+              itemCards.map((item) => {
+                return (
                   <li className="menu-item" key={item.card.info.id}>
                     <div className="dishName">{item.card.info.name}</div>
                     <div className="dishPrice">
@@ -93,11 +93,13 @@ const RestaurantMenu = () => {
                         : item.card.info.defaultPrice / 100}
                     </div>
                   </li>
-                </>
-              );
-            })}
-        </ul>
-      </div>
+                );
+              })}
+          </ul>
+        </div>
+      ) : (
+        <NoResult />
+      )}
     </div>
   );
 };
