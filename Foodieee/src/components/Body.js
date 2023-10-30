@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import NoResult from "./NoResult";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const getTopRated = (listofRestaurants) => {
   return listofRestaurants.filter(
@@ -16,6 +17,7 @@ const Body = () => {
   //when setListofRestaurants will be called, it will find the diff and do reconcillation
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
+  const onlineStatus = useOnlineStatus();
 
   const searchResorDish = () => {
     const filteredRes = listofRestaurants.filter((restaurant) =>
@@ -48,6 +50,10 @@ const Body = () => {
       fetchData();
     }
   }, [searchInput]);
+
+  if (!onlineStatus) {
+    return <h1 style={{ textAlign: "center" }}>Looks like you're offline!</h1>;
+  }
 
   return (listofRestaurants && listofRestaurants.length) === 0 ? (
     <Shimmer />
