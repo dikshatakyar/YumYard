@@ -1,37 +1,13 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { ResMenu_API } from "../config";
-import { IMG_CDN_URL } from "../config";
+import useRestaurantMenu from "../utils/useRestaurantMenu";
+import { IMG_CDN_URL } from "../utils/config";
 import NoResult from "./NoResult";
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null);
-  // const [itemCards, setItemCards] = useState([]);
-
   const { resId } = useParams();
 
-  const fetchMenu = async () => {
-    const menuData = await fetch(ResMenu_API + resId);
-    const json = await menuData.json();
-    setResInfo(json.data);
-    console.log("MenuData", json);
-  };
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  // useEffect(() => {
-  //   const cardsTest = resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR;
-
-  //   if (cardsTest?.cards[1]?.card?.card.title == "Recommended") {
-  //     setItemCards(cardsTest?.cards[1]?.card?.card.itemCards);
-  //   } else {
-  //     setItemCards(cardsTest?.cards[2]?.card?.card.itemCards);
-  //   }
-  //   console.log("ITEMCARDS", itemCards);
-  // }, [resInfo]);
+  const resInfo = useRestaurantMenu(resId);
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -46,14 +22,6 @@ const RestaurantMenu = () => {
     city,
     cloudinaryImageId,
   } = resInfo?.cards[0]?.card?.card?.info;
-
-  // if (cardsTest?.cards[1]?.card?.card.title == "Recommended") {
-  //   setItemCards(cardsTest?.cards[1]?.card?.card.itemCards);
-  // } else {
-  //   setItemCards(cardsTest?.cards[2]?.card?.card.itemCards);
-  // }
-
-  // console.log("itemCards : ", itemCards);
 
   const { itemCards } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
