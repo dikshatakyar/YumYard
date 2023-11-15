@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const TitleLogo = () => (
   <a href="/">
-    <img className="logo" src={foodiez_logo} alt="Foodiez" />
+    <img className="max-w-xs" src={foodiez_logo} alt="Foodiez" />
   </a>
 );
 
@@ -12,31 +12,31 @@ const Header = () => {
   const [btnName, setBtnName] = useState("Login");
 
   return (
-    <div className="header">
+    <div className="flex justify-between text-base bg-cyan-200 shadow-lg">
       <TitleLogo />
-      <div className="nav-items">
-        <ul>
-          <li>
+      <div className="flex items-center">
+        <ul className="flex flex-row items-center p-4 m-4 text-xl" >
+          <li className="px-4">
             <Link className="res-link" to="/">
               Home
             </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="res-link" to="/about">
               About us
             </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="res-link" to="/contact">
               Contact
             </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link className="res-link" to="/grocery">
               Grocery
             </Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
 
           <button
             onClick={() => {
