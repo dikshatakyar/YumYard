@@ -1,9 +1,11 @@
 import RestaurantCard, { isRestaurantOpened } from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import NoResult from "./NoResult";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
+
 
 const getTopRated = (listofRestaurants) => {
   // console.log("getTopRated triggered");
@@ -23,6 +25,7 @@ const Body = () => {
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [resultsFound, setResultsFound] = useState(true);
   const onlineStatus = useOnlineStatus();
+  const { setUsername } = useContext(UserContext);
 
   const RestaurantCardOpened = isRestaurantOpened(RestaurantCard);
 
@@ -110,6 +113,15 @@ const Body = () => {
           >
             {btnName}
           </button>
+        </div>
+        <div>
+          <label>Your Name Here: </label>
+          <input
+            className="border border-solid border-black ml-2"
+            onChange={(e) => {
+              setUsername(e.target.value);
+            }}
+          />
         </div>
       </div>
       {resultsFound === false ? (

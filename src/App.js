@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "../Style.css";
 import Header from "./components/Header";
@@ -9,13 +9,30 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Login from "./components/Login";
+import { lazy, Suspense, useState } from "react";
+import UserContext from "./utils/UserContext";
+
+const Grocery = lazy(() => import("./components/Grocery"));
 
 const Foodiez = () => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    // Authentication : making an API call and sending username & pass
+    const data = {
+      greet: "Hello, ",
+      Name: "Diksha Takyar",
+    };
+    setUsername(data.greet + data.Name);
+  }, []);
+
   return (
     <>
-      <Header />
-      {/* <Body /> */}
-      <Outlet />
+      <UserContext.Provider value={{ loggedInUser: username, setUsername }}>
+        <Header />
+        {/* <Body /> */}
+        <Outlet />
+      </UserContext.Provider>
     </>
   );
 };
@@ -39,13 +56,21 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
+      {
         path: "/restaurants/:resId",
         element: <RestaurantMenu />,
       },
       {
-        path : "/login",
-        element : <Login/>
-      }
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);

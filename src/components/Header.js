@@ -1,6 +1,7 @@
 import foodiez_logo from "../../Assets/foodiez_logo.png";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 export const TitleLogo = () => (
   <a href="/">
@@ -9,13 +10,15 @@ export const TitleLogo = () => (
 );
 
 const Header = () => {
+  const {loggedInUser} = useContext(UserContext);
+  console.log("CONTEXT : ", loggedInUser);
   const [btnName, setBtnName] = useState("Login");
 
   return (
     <div className="flex justify-between text-base bg-cyan-200 shadow-lg">
       <TitleLogo />
       <div className="flex items-center">
-        <ul className="flex flex-row items-center p-4 m-4 text-xl" >
+        <ul className="flex flex-row items-center p-4 m-4 text-xl">
           <li className="px-4">
             <Link className="res-link" to="/">
               Home
@@ -40,13 +43,14 @@ const Header = () => {
 
           <button
             onClick={() => {
-              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
+              btnName === "Login " ? setBtnName("Logout ") : setBtnName("Login ");
             }}
           >
             <Link className="res-link" to="/login">
               {btnName}
             </Link>
           </button>
+          <li className="px-4 font-semibold"> {loggedInUser}</li>
         </ul>
       </div>
     </div>

@@ -4,8 +4,11 @@ import useRestaurantMenu from "../utils/useRestaurantMenu";
 import { IMG_CDN_URL } from "../utils/config";
 import NoResult from "./NoResult";
 import RestaurantCategory from "./RestaurantCategory";
+import { useState } from "react";
 
 const RestaurantMenu = () => {
+  const [showIndex, setShowIndex] = useState(null);
+
   const { resId } = useParams();
 
   const resInfo = useRestaurantMenu(resId);
@@ -26,11 +29,6 @@ const RestaurantMenu = () => {
 
   const { itemCards } =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card;
-
-  // console.log(
-  //   "MENU LIST : ",
-  //   resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-  // );
 
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
@@ -56,46 +54,23 @@ const RestaurantMenu = () => {
           <img src={IMG_CDN_URL + cloudinaryImageId} />
         </div>
       </div>
-      {/* {itemCards ? (
-        <div className="flex flex-col justify-center items-center">
-          <h1>MENU</h1>
-          <div>
-            <div className="flex flex-row justify-between m-3 font-bold">
-              <div>ITEMS</div>
-              <div>PRICE</div>
-            </div>
-            {itemCards &&
-              itemCards.map((item) => {
-                return (
-                  <li
-                    className="flex justify-between m-2"
-                    key={item.card.info.id}
-                  >
-                    <div className="flex flex-wrap">{item.card.info.name}</div>
-                    <div className="ml-8">
-                      Rs.{" "}
-                      {item.card.info.price
-                        ? item.card.info.price / 100
-                        : item.card.info.defaultPrice / 100}
-                    </div>
-                  </li>
-                );
-              })}
-          </div>
-        </div>
-      ) : (
-        <NoResult />
-      )} */}
 
       <div className="text-center">
-        {categories.map((category) => {
-          return (
-            <RestaurantCategory
-              key={category?.card?.card?.title}
-              data={category?.card?.card}
-            />
-          );
-        })}
+        {categories.length > 0 ? (
+          categories.map((category, index) => {
+            return (
+              <RestaurantCategory
+                key={category?.card?.card?.title}
+                data={category?.card?.card}
+                showIndex={index === showIndex ? true : false}
+                setShowIndex={(index) => setShowIndex(index)}
+                index={index}
+              />
+            );
+          })
+        ) : (
+          <NoResult />
+        )}
       </div>
     </div>
   );
