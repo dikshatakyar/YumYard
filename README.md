@@ -4,12 +4,12 @@
 
 - Created a food ordering app with a config driven UI and fetched data from realtime API of Swiggy.
 
-![Alt text](image.png)
+![image](https://github.com/dikshatakyar/YumYard/assets/75247382/b9aeafe9-2f03-4d34-b61a-491fcb7bb557)
 
 
 - Implemented React Router with children routes and dynamic routing to display menus for restaurants.
 
-![Alt text](image-1.png)
+![image](https://github.com/dikshatakyar/YumYard/assets/75247382/ff3dedde-7ce2-4c53-837b-e38d58987af2)
 
 
 - Reduced website load time by 70% with lazy loading.
