@@ -11,24 +11,26 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Login from "./components/Login";
 import { lazy, Suspense, useState } from "react";
 import UserContext from "./utils/UserContext";
+// import Grocery from "./components/Grocery";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 const Foodiez = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("User");
 
   useEffect(() => {
     // Authentication : making an API call and sending username & pass
     const data = {
-      greet: "Hello, ",
-      Name: "Diksha Takyar",
+      Name: "Diksha",
     };
-    setUsername(data.greet + data.Name);
+    setUsername(data.Name);
   }, []);
 
   return (
     <>
-      <UserContext.Provider value={{ loggedInUser: username, setUsername }}>
+      <UserContext.Provider
+        value={{ loggedInUser: username, Greet: "Hello", setUsername }}
+      >
         <Header />
         {/* <Body /> */}
         <Outlet />
