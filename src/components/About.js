@@ -27,7 +27,11 @@ class About extends React.Component {
     return (
       <>
         <UserContext.Consumer>
-          {({loggedInUser}) => <h1 className="font-bold text-xl text-center m-4 p-4">{loggedInUser}</h1>}
+          {({ loggedInUser }) => (
+            <h1 className="font-bold text-xl text-center m-4 p-4">
+              Welcome to YumYard, {loggedInUser}
+            </h1>
+          )}
         </UserContext.Consumer>
         <h1>ABOUT US</h1>
         <h3>
@@ -38,7 +42,7 @@ class About extends React.Component {
 
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {/* <User {...userDetails} /> */}
-          <UserClass name={"DIKSHA"} location={"DELHI"} />
+          {/* <UserClass name={"DIKSHA"} location={"DELHI"} /> */}
         </div>
       </>
     );
