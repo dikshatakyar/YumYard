@@ -6,7 +6,6 @@ import NoResult from "./NoResult";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
 
-
 const getTopRated = (listofRestaurants) => {
   // console.log("getTopRated triggered");
   return listofRestaurants.filter(
@@ -117,7 +116,7 @@ const Body = () => {
         <div>
           <label>Your Name Here: </label>
           <input
-            className="border border-solid border-black ml-2"
+            className="border border-solid border-black ml-2 px-2"
             onChange={(e) => {
               setUsername(e.target.value);
             }}
