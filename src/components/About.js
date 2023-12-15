@@ -11,6 +11,7 @@ const userDetails = {
 class About extends React.Component {
   constructor(props) {
     super(props);
+    console.log("ABOUT : ", props);
     // console.log("about constructor");
   }
 
@@ -42,7 +43,7 @@ class About extends React.Component {
 
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {/* <User {...userDetails} /> */}
-          {/* <UserClass name={"DIKSHA"} location={"DELHI"} /> */}
+          <UserClass name={"DIKSHA"} location={"DELHI"} />
         </div>
       </>
     );
@@ -50,3 +51,9 @@ class About extends React.Component {
 }
 
 export default About;
+
+
+
+//- WHEN CLASS IS INSTANIATED, THE CONSTRUCTOR IS CALLED
+//- THEN RENDER IS CALLED
+//- WHEN CBC IS MOUNTED ON THE DOM, COMPONENTDIDMOUNT() IS CALLED

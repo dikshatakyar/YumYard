@@ -1,17 +1,16 @@
-import foodiez_logo from "../../Assets/foodiez_logo.png";
+import YumYard_logo from "../../Assets/YumYard_logo.png";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
 
 export const TitleLogo = () => (
   <a href="/">
-    <img className="max-w-xs" src={foodiez_logo} alt="Foodiez" />
+    <img className="max-w-xs" src={YumYard_logo} alt="Foodiez" />
   </a>
 );
 
 const Header = () => {
-  const {loggedInUser} = useContext(UserContext);
-  console.log("CONTEXT : ", loggedInUser);
+  const { loggedInUser, Greet } = useContext(UserContext);
   const [btnName, setBtnName] = useState("Login");
 
   return (
@@ -43,14 +42,16 @@ const Header = () => {
 
           <button
             onClick={() => {
-              btnName === "Login " ? setBtnName("Logout ") : setBtnName("Login ");
+              btnName === "Login "
+                ? setBtnName("Logout ")
+                : setBtnName("Login ");
             }}
           >
             <Link className="res-link" to="/login">
               {btnName}
             </Link>
           </button>
-          <li className="px-4 font-semibold"> {loggedInUser}</li>
+          <li className="px-4 font-semibold"> {Greet + ", " + loggedInUser}</li>
         </ul>
       </div>
     </div>
