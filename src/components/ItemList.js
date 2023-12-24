@@ -8,13 +8,13 @@ const ItemList = ({ items, addBtn }) => {
   // const cartItemsSelector = useSelector((store) => store.cart.items);
 
   const handleRemoveItem = (item) => {
-    console.log("remove item : ", item);
+    // console.log("remove item : ", item);
     dispatch(removeItem(item));
   };
 
   const handleAddItem = (item) => {
     dispatch(addItem(item));
-    console.log("CARTITEMS LENGTH : ");
+    // console.log("CARTITEMS LENGTH : ");
   };
 
   return (

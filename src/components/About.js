@@ -11,7 +11,7 @@ const userDetails = {
 class About extends React.Component {
   constructor(props) {
     super(props);
-    console.log("ABOUT : ", props);
+    // console.log("ABOUT : ", props);
     // console.log("about constructor");
   }
 
@@ -26,16 +26,16 @@ class About extends React.Component {
   render() {
     // console.log("About Render");
     return (
-      <>
+      <div className="flex flex-col text-center text-xl">
         <UserContext.Consumer>
           {({ loggedInUser }) => (
-            <h1 className="font-bold text-xl text-center m-4 p-4">
+            <h1 className="font-bold text-3xl  m-4 p-4">
               Welcome to YumYard, {loggedInUser}
             </h1>
           )}
         </UserContext.Consumer>
-        <h1>ABOUT US</h1>
-        <h3>
+        <h1 className="m-4 font-bold">ABOUT US</h1>
+        <h3 className="p-4 mx-8">
           Our mission is to elevate the quality of life for the urban consumer
           with unparalleled convenience. Convenience is what makes us tick. It's
           what makes us get out of bed and say, "Let's do this."
@@ -43,9 +43,9 @@ class About extends React.Component {
 
         <div style={{ display: "flex", justifyContent: "space-around" }}>
           {/* <User {...userDetails} /> */}
-          <UserClass name={"DIKSHA"} location={"DELHI"} />
+          {/* <UserClass name={"DIKSHA"} location={"DELHI"} /> */}
         </div>
-      </>
+      </div>
     );
   }
 }

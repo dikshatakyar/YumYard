@@ -3,7 +3,7 @@ import { Component } from "react";
 class UserClass extends Component {
   constructor(props) {
     super(props);
-    console.log("USERCLASS : ", props);
+    // console.log("USERCLASS : ", props);
 
     // console.log(this.props.name + " constructor");
     this.state = {
@@ -23,11 +23,11 @@ class UserClass extends Component {
       userInfo: jsonData,
     });
 
-    console.log("userInfo :", jsonData);
+    // console.log("userInfo :", jsonData);
   }
 
   render() {
-    console.log(this.props.name + " Render");
+    // console.log(this.props.name + " Render");
     const { name, location, avatar_url } = this.state.userInfo;
     // debugger;
     return (

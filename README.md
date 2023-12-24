@@ -1,21 +1,25 @@
 # YumYard
-(Developed using : React.js + Parcel + TailwindCSS)
 
+(Tech stacks : React.js + Parcel + TailwindCSS + Redux Toolkit)
 
 - Created a food ordering app with a config driven UI and fetched data from realtime API of Swiggy.
 
-![Alt text](image.png)
-
+![alt text](./Assets/image.png)
 
 - Implemented React Router with children routes and dynamic routing to display menus for restaurants.
 
-![Alt text](image-1.png)
+![alt text](./Assets/image-1.png)
 
+- Built the functionality of Cart using Redux Toolkit.
 
-- Reduced website load time by 70% with lazy loading.
+![alt text](./Assets/Add.png)
 
-- Implemented React Context to get rid of Prop Drilling.
+![alt text](./Assets/Cart.png)
 
-- Developed Custom Hooks to check the online status of user.
+- Reduced website load time with lazy loading.
 
-- Modular and perfomant code.
+- Implemented React Context to display name of the user globally.
+
+- Developed Custom Hook to check the online status of user.
+
+- Modular and performant code.

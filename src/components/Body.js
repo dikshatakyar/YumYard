@@ -28,7 +28,7 @@ const Body = () => {
 
   const RestaurantCardOpened = isRestaurantOpened(RestaurantCard);
 
-  console.log("listofRes : ", listofRestaurants);
+  // console.log("listofRes : ", listofRestaurants);
 
   const searchResorDish = () => {
     const filteredRes = listofRestaurants.filter((restaurant) =>
@@ -56,7 +56,7 @@ const Body = () => {
   };
 
   useEffect(() => {
-    console.log("useffect triggered");
+    // console.log("useffect triggered");
     if (searchInput === "") {
       setResultsFound(true);
       fetchData();

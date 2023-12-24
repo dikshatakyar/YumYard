@@ -12,7 +12,7 @@ export const TitleLogo = () => (
 
 const Header = () => {
   const { loggedInUser, Greet } = useContext(UserContext);
-  const [btnName, setBtnName] = useState("Login");
+  // const [btnName, setBtnName] = useState("Login");
 
   const cartItems = useSelector((store) => store.cart.items);
   // console.log("redux cart : ", cartItems);
@@ -28,17 +28,17 @@ const Header = () => {
           <li className="px-4">
             <Link to="/about">About us</Link>
           </li>
-          <li className="px-4">
+          {/* <li className="px-4">
             <Link to="/contact">Contact</Link>
-          </li>
-          <li className="px-4">
+          </li> */}
+          {/* <li className="px-4">
             <Link to="/grocery">Grocery</Link>
-          </li>
+          </li> */}
           <li className="px-4 font-semibold">
             <Link to="/cart">Cart: {cartItems.length} items</Link>
           </li>
 
-          <button
+          {/* <button
             onClick={() => {
               btnName === "Login "
                 ? setBtnName("Logout ")
@@ -46,7 +46,7 @@ const Header = () => {
             }}
           >
             <Link to="/login">{btnName}</Link>
-          </button>
+          </button> */}
           <li className="px-4 font-semibold"> {Greet + ", " + loggedInUser}</li>
         </ul>
       </div>
