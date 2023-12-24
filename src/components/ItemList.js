@@ -1,12 +1,28 @@
+import { useDispatch, useSelector } from "react-redux";
 import { IMG_CDN_URL } from "../utils/config";
+import { addItem, removeItem } from "../utils/cartSlice";
+import { useEffect, useState } from "react";
 
-const ItemList = ({ items }) => {
-  console.log("THE items", items);
+const ItemList = ({ items, addBtn }) => {
+  const dispatch = useDispatch();
+  // const cartItemsSelector = useSelector((store) => store.cart.items);
+
+  const handleRemoveItem = (item) => {
+    console.log("remove item : ", item);
+    dispatch(removeItem(item));
+  };
+
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+    console.log("CARTITEMS LENGTH : ");
+  };
+
   return (
     <>
       {items.map((item) => {
         const { name, price, description, defaultPrice, imageId, id } =
           item.card.info;
+
         return (
           <div
             key={id}
@@ -24,11 +40,25 @@ const ItemList = ({ items }) => {
               {imageId && (
                 <img src={IMG_CDN_URL + imageId} className="object-cover" />
               )}
-              <div className="flex justify-center">
-                <button className="shadow-lg p-2 text-green-600 font-semibold rounded-lg">
-                  ADD
-                </button>
-              </div>
+              {addBtn ? (
+                <div className="flex justify-center">
+                  <button
+                    className="shadow-lg p-2 text-green-600 font-semibold rounded-lg"
+                    onClick={() => handleAddItem(item)}
+                  >
+                    ADD
+                  </button>
+                </div>
+              ) : (
+                <div className="flex justify-center">
+                  <button
+                    className="shadow-lg p-2 text-red-500 font-semibold rounded-lg"
+                    onClick={() => handleRemoveItem(item)}
+                  >
+                    REMOVE
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         );
