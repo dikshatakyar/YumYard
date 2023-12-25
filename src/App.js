@@ -25,7 +25,7 @@ const Foodiez = () => {
   useEffect(() => {
     // Authentication : making an API call and sending username & pass
     const data = {
-      Name: "Diksha",
+      Name: "User",
     };
     setUsername(data.Name);
   }, []);
