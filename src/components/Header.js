@@ -1,4 +1,5 @@
 import YumYard_logo from "../../Assets/YumYard_logo.png";
+// import { YUMYARD_LOGO } from "../utils/config";
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
@@ -12,7 +13,7 @@ export const TitleLogo = () => (
 
 const Header = () => {
   const { loggedInUser, Greet } = useContext(UserContext);
-  // const [btnName, setBtnName] = useState("Login");
+  const [btnName, setBtnName] = useState("Login");
 
   const cartItems = useSelector((store) => store.cart.items);
   // console.log("redux cart : ", cartItems);
@@ -28,9 +29,9 @@ const Header = () => {
           <li className="px-4">
             <Link to="/about">About us</Link>
           </li>
-          {/* <li className="px-4">
+          <li className="px-4">
             <Link to="/contact">Contact</Link>
-          </li> */}
+          </li>
           {/* <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li> */}
@@ -38,15 +39,13 @@ const Header = () => {
             <Link to="/cart">Cart: {cartItems.length} items</Link>
           </li>
 
-          {/* <button
+          <button
             onClick={() => {
-              btnName === "Login "
-                ? setBtnName("Logout ")
-                : setBtnName("Login ");
+              btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
-            <Link to="/login">{btnName}</Link>
-          </button> */}
+            {btnName}
+          </button>
           <li className="px-4 font-semibold"> {Greet + ", " + loggedInUser}</li>
         </ul>
       </div>
