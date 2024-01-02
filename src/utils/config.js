@@ -1,6 +1,12 @@
 export const IMG_CDN_URL =
   "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
+// export const YUMYARD_LOGO =
+  // "https://github-production-user-asset-6210df.s3.amazonaws.com/75247382/293515477-c2904f3c-2d4b-4617-a0ff-3008f73e6379.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231231%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231231T163832Z&X-Amz-Expires=300&X-Amz-Signature=2c66d65c9e566abac4b70c11ceea71ed61b90f79a9a0e32cca2cbf83204ac28c&X-Amz-SignedHeaders=host&actor_id=75247382&key_id=0&repo_id=418389209";
+
+// export const YUMYARD_LOGO =
+//   "https://github.com/dikshatakyar/Portfolio-Landing-Page/assets/75247382/1369bd67-5e0b-4c0c-943b-7b55975d4d60";
+
 export const ResMenu_API =
   "https://corsproxy.org/?https%3A%2F%2Fwww.swiggy.com%2Fdapi%2Fmenu%2Fpl%3Fpage-type%3DREGULAR_MENU%26complete-menu%3Dtrue%26lat%3D28.6315885%26lng%3D77.28307649999999%26restaurantId%3D";
 
