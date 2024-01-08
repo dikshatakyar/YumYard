@@ -1,6 +1,6 @@
 # YumYard
 
-(Tech stacks : React.js + Parcel + TailwindCSS + Redux Toolkit)
+(Tech stacks : React.js + Parcel + TailwindCSS + Redux Toolkit + Jest)
 
 - Created a food ordering app with a config driven UI and fetched data from realtime API of Swiggy.
 
@@ -21,5 +21,7 @@
 - Implemented React Context to display name of the user globally.
 
 - Developed Custom Hook to check the online status of user.
+
+- Performed unit testing and integration testing for add to cart & search feature on homepage.
 
 - Modular and performant code.
