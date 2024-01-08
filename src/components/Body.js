@@ -47,11 +47,11 @@ const Body = () => {
     const jsonData = await myData.json();
 
     const arrayOfRestaurants =
-      jsonData?.data?.cards[1]?.card?.card?.["@type"] ===
-      "type.googleapis.com/swiggy.gandalf.widgets.v2.GridWidget"
-        ? jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+      jsonData?.data?.cards[2]?.card?.card?.header?.title ===
+      "Top restaurant chains in Delhi"
+        ? jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants
-        : jsonData?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
+        : jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
             ?.restaurants;
 
     setListofRestaurants(arrayOfRestaurants);
