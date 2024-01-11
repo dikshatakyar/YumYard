@@ -2,7 +2,7 @@ import RestaurantMenu from "../RestaurantMenu";
 import { act } from "react-dom/test-utils";
 import { fireEvent, render, screen } from "@testing-library/react";
 import MENU_DATA from "../mocks/resMenu.json";
-import appStore from "../../utils/AppStore";
+import appStore from "../../utils/appStore";
 import { Provider } from "react-redux";
 import Header from "../Header";
 import { BrowserRouter } from "react-router-dom";
